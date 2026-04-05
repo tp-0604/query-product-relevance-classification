@@ -73,7 +73,7 @@ query-product-relevance-classification/
 │   └── reports/                         # Classification reports as CSV
 ├── notebooks/
 │   └── EDA.ipynb                        # Exploratory Data Analysis
-├── ESCI_Classification_Colab.ipynb      # Colab notebook (full pipeline)
+│   └── ESCI_Classification_Colab.ipynb  # Colab notebook (full pipeline)
 ├── main.py                              # CLI runner
 ├── requirements.txt
 └── README.md
