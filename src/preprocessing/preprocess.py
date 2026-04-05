@@ -41,12 +41,7 @@ def load_data(examples_path: str, products_path: str, sample_size: int = None) -
     products = pd.read_parquet(products_path)
 
     logger.info("Merging on product_id...")
-    df = examples.merge(
-        products[["product_id", "product_title"]],
-        on="product_id",
-        how="left"
-    )
-
+    df = pd.read_parquet(examples_path)
     # Filter to English only
     df = df[df["product_locale"] == "us"].reset_index(drop=True)
     logger.info(f"Total English samples: {len(df)}")
