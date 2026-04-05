@@ -1,6 +1,6 @@
 # Query-Product Relevance Classification in Amazon Search
 ### NLP Case Study (CA-3) | MTech AI/ML | Symbiosis Institute of Technology, Pune
-**PRN:** 25070149025 &nbsp;|&nbsp; **Faculty:** Dr. Zulfikar Ali Ansari
+**PRN:** 25070149025 &nbsp;|&nbsp; **Faculty:** Dr. Aniket Shahade
 
 ---
 
