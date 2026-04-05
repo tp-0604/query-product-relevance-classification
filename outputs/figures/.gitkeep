@@ -1,0 +1,2 @@
+This directory stores all generated figures (confusion matrices, F1 plots, comparative analysis).
+These are committed to GitHub so results are reproducible without re-running the pipeline.

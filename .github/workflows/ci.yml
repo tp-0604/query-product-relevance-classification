@@ -1,0 +1,46 @@
+name: Lint & Structure Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install lint deps
+        run: pip install flake8
+
+      - name: Lint with flake8
+        run: |
+          flake8 src/ main.py --max-line-length=120 --ignore=E501,W503
+
+  structure-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify project structure
+        run: |
+          echo "Checking required files exist..."
+          test -f main.py
+          test -f requirements.txt
+          test -f src/preprocessing/preprocess.py
+          test -f src/models/naive_bayes.py
+          test -f src/models/logistic_regression.py
+          test -f src/models/svm.py
+          test -f src/models/bilstm.py
+          test -f src/models/distilbert.py
+          test -f src/evaluation/evaluate.py
+          test -d outputs/figures
+          test -d outputs/reports
+          echo "All checks passed."
