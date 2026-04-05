@@ -219,6 +219,7 @@ Without pretrained embeddings (GloVe was not used), the BiLSTM initializes rando
 
 ### Comparative Analysis
 ![Comparative Analysis](outputs/figures/comparative_analysis.png)
+
 ![F1 Heatmap](outputs/figures/f1_heatmap_all_models.png)
 
 ### Confusion Matrices
