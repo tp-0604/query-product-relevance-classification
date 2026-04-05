@@ -222,13 +222,21 @@ Without pretrained embeddings (GloVe was not used), the BiLSTM initializes rando
 ![F1 Heatmap](outputs/figures/f1_heatmap_all_models.png)
 
 ### Confusion Matrices
-| Naive Bayes | Logistic Regression |
+| Naive Bayes | |
 |---|---|
-| ![](outputs/figures/confusion_matrix_Naive_Bayes.png) | ![](outputs/figures/confusion_matrix_Logistic_Regression.png) |
+| ![](outputs/figures/confusion_matrix_Naive_Bayes.png) | |
 
-| SVM | BiLSTM |
+| Logistic Regression | |
 |---|---|
-| ![](outputs/figures/confusion_matrix_SVM.png) | ![](outputs/figures/confusion_matrix_BiLSTM.png) |
+| ![](outputs/figures/confusion_matrix_Logistic_Regression.png) | |
+
+| SVM | |
+|---|---|
+| ![](outputs/figures/confusion_matrix_SVM.png) | |
+
+| BiLSTM | |
+|---|---|
+| ![](outputs/figures/confusion_matrix_BiLSTM.png) | |
 
 | DistilBERT | |
 |---|---|
