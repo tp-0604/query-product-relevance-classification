@@ -32,8 +32,6 @@ os.makedirs(FIGURES_DIR, exist_ok=True)
 os.makedirs(REPORTS_DIR, exist_ok=True)
 
 
-# ── Core Metrics ───────────────────────────────────────────────────────────────
-
 def compute_metrics(y_true, y_pred, model_name: str) -> dict:
     acc = accuracy_score(y_true, y_pred)
     precision = precision_score(y_true, y_pred, average="weighted", zero_division=0)
@@ -74,14 +72,11 @@ def save_classification_report(y_true, y_pred, model_name: str):
     df.to_csv(path)
     logger.info(f"Classification report saved: {path}")
 
-    # Also print to console
     print(f"\nClassification Report — {model_name}")
     print(classification_report(y_true, y_pred, target_names=LABEL_NAMES, zero_division=0))
 
     return df
 
-
-# ── Confusion Matrix ───────────────────────────────────────────────────────────
 
 def plot_confusion_matrix(y_true, y_pred, model_name: str):
     cm = confusion_matrix(y_true, y_pred)
@@ -90,7 +85,6 @@ def plot_confusion_matrix(y_true, y_pred, model_name: str):
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     fig.suptitle(f"Confusion Matrix — {model_name}", fontsize=14, fontweight="bold")
 
-    # Raw counts
     sns.heatmap(
         cm, annot=True, fmt="d", cmap="Blues",
         xticklabels=LABEL_NAMES, yticklabels=LABEL_NAMES,
@@ -100,7 +94,6 @@ def plot_confusion_matrix(y_true, y_pred, model_name: str):
     axes[0].set_xlabel("Predicted")
     axes[0].set_ylabel("True")
 
-    # Normalized
     sns.heatmap(
         cm_norm, annot=True, fmt=".2f", cmap="Blues",
         xticklabels=LABEL_NAMES, yticklabels=LABEL_NAMES,
@@ -116,8 +109,6 @@ def plot_confusion_matrix(y_true, y_pred, model_name: str):
     plt.close()
     logger.info(f"Confusion matrix saved: {path}")
 
-
-# ── Per-Class F1 ───────────────────────────────────────────────────────────────
 
 def plot_per_class_f1(y_true, y_pred, model_name: str):
     f1s = f1_score(y_true, y_pred, average=None, zero_division=0)
@@ -142,8 +133,6 @@ def plot_per_class_f1(y_true, y_pred, model_name: str):
     plt.close()
     logger.info(f"Per-class F1 plot saved: {path}")
 
-
-# ── Comparative Analysis ───────────────────────────────────────────────────────
 
 def plot_comparative_analysis(all_metrics: list):
     """

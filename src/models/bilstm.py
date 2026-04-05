@@ -21,11 +21,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 logger.info(f"BiLSTM using device: {DEVICE}")
 
 
-# ── Tokenizer ──────────────────────────────────────────────────────────────────
-
 class SimpleTokenizer:
-    """Word-level tokenizer with vocab built from training data."""
-
     def __init__(self, max_vocab: int = 30000, max_len: int = 64):
         self.max_vocab = max_vocab
         self.max_len = max_len
@@ -52,8 +48,6 @@ class SimpleTokenizer:
         return ids
 
 
-# ── Dataset ────────────────────────────────────────────────────────────────────
-
 class ESCIDataset(Dataset):
     def __init__(self, texts, labels, tokenizer: SimpleTokenizer):
         self.encodings = [tokenizer.encode(t) for t in texts]
@@ -68,8 +62,6 @@ class ESCIDataset(Dataset):
             torch.tensor(self.labels[idx], dtype=torch.long),
         )
 
-
-# ── Model ──────────────────────────────────────────────────────────────────────
 
 class BiLSTMClassifier(nn.Module):
     def __init__(
@@ -109,8 +101,6 @@ class BiLSTMClassifier(nn.Module):
         return self.fc(hidden)                             # (B, C)
 
 
-# ── GloVe loader ──────────────────────────────────────────────────────────────
-
 def load_glove(glove_path: str, word2idx: dict, embed_dim: int = 100):
     """
     Load GloVe embeddings for words in vocab.
@@ -136,8 +126,6 @@ def load_glove(glove_path: str, word2idx: dict, embed_dim: int = 100):
     logger.info(f"GloVe: {found}/{len(word2idx)} words found.")
     return embeddings
 
-
-# ── Train / Predict ───────────────────────────────────────────────────────────
 
 def train(
     train_texts,

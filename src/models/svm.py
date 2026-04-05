@@ -14,11 +14,6 @@ logger = logging.getLogger(__name__)
 
 
 def train(X_train, y_train, C: float = 1.0, max_iter: int = 2000):
-    """
-    Train LinearSVC.
-    Wrapped in CalibratedClassifierCV to enable predict_proba if needed.
-    C: regularization parameter.
-    """
     logger.info(f"Training SVM / LinearSVC (C={C})...")
     base = LinearSVC(C=C, max_iter=max_iter, random_state=42)
     model = CalibratedClassifierCV(base, cv=3)

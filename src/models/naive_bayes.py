@@ -14,10 +14,6 @@ logger = logging.getLogger(__name__)
 
 
 def train(X_train, y_train, alpha: float = 0.1):
-    """
-    Train Multinomial Naive Bayes.
-    alpha: Laplace smoothing parameter.
-    """
     logger.info(f"Training Naive Bayes (alpha={alpha})...")
     model = MultinomialNB(alpha=alpha)
     model.fit(X_train, y_train)

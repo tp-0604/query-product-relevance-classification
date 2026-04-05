@@ -100,10 +100,8 @@ def preprocess_texts(df: pd.DataFrame) -> pd.DataFrame:
         lambda x: remove_stopwords(x, stop_words)
     )
 
-    # Combined text for classical ML (query + title)
     df["text"] = df["query_clean"] + " " + df["title_clean"]
 
-    # Encode labels
     df["label"] = df["esci_label"].map(LABEL_MAP)
 
     logger.info("Preprocessing complete.")
@@ -125,7 +123,7 @@ def get_tfidf_features(
     vectorizer = TfidfVectorizer(
         max_features=max_features,
         ngram_range=ngram_range,
-        sublinear_tf=True,       # log normalization
+        sublinear_tf=True,     
         min_df=2,
         strip_accents="unicode"
     )

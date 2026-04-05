@@ -26,8 +26,6 @@ MODEL_NAME = "distilbert-base-uncased"
 logger.info(f"DistilBERT using device: {DEVICE}")
 
 
-# ── Dataset ────────────────────────────────────────────────────────────────────
-
 class ESCIPairDataset(Dataset):
     """
     Encodes (query, product_title) as a sentence pair using [SEP].
@@ -54,8 +52,6 @@ class ESCIPairDataset(Dataset):
             "labels": self.labels[idx],
         }
 
-
-# ── Train ──────────────────────────────────────────────────────────────────────
 
 def train(
     train_queries,
@@ -111,8 +107,6 @@ def train(
     return model, tokenizer
 
 
-# ── Predict ────────────────────────────────────────────────────────────────────
-
 def predict(model, tokenizer, queries, titles, batch_size: int = 64, max_len: int = 128):
     model.eval()
     dummy_labels = np.zeros(len(queries), dtype=int)
@@ -129,8 +123,6 @@ def predict(model, tokenizer, queries, titles, batch_size: int = 64, max_len: in
 
     return np.array(all_preds)
 
-
-# ── Save / Load ────────────────────────────────────────────────────────────────
 
 def save(model, tokenizer, save_dir: str):
     model.save_pretrained(save_dir)

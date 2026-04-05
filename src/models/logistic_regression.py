@@ -13,10 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 def train(X_train, y_train, C: float = 1.0, max_iter: int = 1000):
-    """
-    Train Logistic Regression with L2 regularization.
-    C: inverse regularization strength.
-    """
     logger.info(f"Training Logistic Regression (C={C}, max_iter={max_iter})...")
     model = LogisticRegression(
         C=C,
