@@ -1,6 +1,6 @@
-# Query-Product Relevance Classification in Amazon Search
+# Query-Product Relevance Classification in Amazon Search using NLP: A Comparative Study of Traditional ML and Deep Learning Approaches
 ### NLP Case Study (CA-3) | MTech AI/ML | Symbiosis Institute of Technology, Pune
-**PRN:** 25070149025 &nbsp;|&nbsp; **Faculty:** Dr. Zulfikar Ali Ansari
+**PRN:** 25070149025 &nbsp;|&nbsp; **Faculty:** Dr. Aniket Shahade
 
 ---
 
@@ -26,7 +26,7 @@ Given a pair `(search query, product title)`, the goal is to classify the releva
 **Amazon Shopping Queries Dataset (ESCI)**
 - Released by Amazon Science ([github.com/amazon-science/esci-data](https://github.com/amazon-science/esci-data))
 - Contains real customer search queries paired with product listings annotated by human judges
-- **20,000 samples** used (5,000 per class, stratified) from the English (US) locale
+- 20,000 samples out of 2,621,738 rows (5,000 per class, stratified) from the English (US) locale  have been used. 
 - **Train / Test split:** 80% / 20% (16,000 train, 4,000 test)
 - Loaded via HuggingFace: `tasksource/esci`
 
@@ -73,7 +73,7 @@ query-product-relevance-classification/
 │   └── reports/                         # Classification reports as CSV
 ├── notebooks/
 │   └── EDA.ipynb                        # Exploratory Data Analysis
-├── ESCI_Classification_Colab.ipynb      # Colab notebook (full pipeline)
+│   └── ESCI_Classification_Colab.ipynb  # Colab notebook (full pipeline)
 ├── main.py                              # CLI runner
 ├── requirements.txt
 └── README.md
@@ -123,7 +123,7 @@ The following preprocessing steps are applied to both `query` and `product_title
 
 For classical ML models (NB, LR, SVM), the cleaned query and title are **concatenated** into a single string and converted to **TF-IDF features** (unigrams + bigrams, max 20,000 features, sublinear TF scaling).
 
-For deep models, query and title are kept **separate**:
+For deep learning models, query and title are kept **separate**:
 - BiLSTM: concatenated as one sequence
 - DistilBERT: encoded as a sentence pair `[CLS] query [SEP] product_title [SEP]`
 
@@ -219,16 +219,25 @@ GloVe 100d gave F1 = 0.71, 200d gave 0.73, and 300d gave 0.74. The improvement i
 
 ### Comparative Analysis
 ![Comparative Analysis](outputs/figures/comparative_analysis.png)
+
 ![F1 Heatmap](outputs/figures/f1_heatmap_all_models.png)
 
 ### Confusion Matrices
-| Naive Bayes | Logistic Regression |
+| Naive Bayes | |
 |---|---|
-| ![](outputs/figures/confusion_matrix_Naive_Bayes.png) | ![](outputs/figures/confusion_matrix_Logistic_Regression.png) |
+| ![](outputs/figures/confusion_matrix_Naive_Bayes.png) | |
 
-| SVM | BiLSTM |
+| Logistic Regression | |
 |---|---|
-| ![](outputs/figures/confusion_matrix_SVM.png) | ![](outputs/figures/confusion_matrix_BiLSTM.png) |
+| ![](outputs/figures/confusion_matrix_Logistic_Regression.png) | |
+
+| SVM | |
+|---|---|
+| ![](outputs/figures/confusion_matrix_SVM.png) | |
+
+| BiLSTM | |
+|---|---|
+| ![](outputs/figures/confusion_matrix_BiLSTM.png) | |
 
 | DistilBERT | |
 |---|---|
