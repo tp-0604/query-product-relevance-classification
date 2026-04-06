@@ -103,7 +103,7 @@ Open `ESCI_Classification_Colab.ipynb` directly in Colab. The notebook:
 - Streams the dataset from HuggingFace (no manual upload needed)
 - Runs all 5 models end to end
 - Saves all figures and reports to `outputs/`
-- Pushes results to GitHub via PAT
+- Pushes results to GitHub via Personal Access Token
 
 > ⚠️ Enable GPU before running: **Runtime → Change runtime type → T4 GPU**
 
