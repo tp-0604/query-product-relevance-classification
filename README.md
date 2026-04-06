@@ -26,7 +26,7 @@ Given a pair `(search query, product title)`, the goal is to classify the releva
 **Amazon Shopping Queries Dataset (ESCI)**
 - Released by Amazon Science ([github.com/amazon-science/esci-data](https://github.com/amazon-science/esci-data))
 - Contains real customer search queries paired with product listings annotated by human judges
-- **20,000 samples** used (5,000 per class, stratified) from the English (US) locale
+- 20,000 samples out of 2,621,738 rows (5,000 per class, stratified) from the English (US) locale  have been used. 
 - **Train / Test split:** 80% / 20% (16,000 train, 4,000 test)
 - Loaded via HuggingFace: `tasksource/esci`
 
@@ -123,7 +123,7 @@ The following preprocessing steps are applied to both `query` and `product_title
 
 For classical ML models (NB, LR, SVM), the cleaned query and title are **concatenated** into a single string and converted to **TF-IDF features** (unigrams + bigrams, max 20,000 features, sublinear TF scaling).
 
-For deep models, query and title are kept **separate**:
+For deep learning models, query and title are kept **separate**:
 - BiLSTM: concatenated as one sequence
 - DistilBERT: encoded as a sentence pair `[CLS] query [SEP] product_title [SEP]`
 
