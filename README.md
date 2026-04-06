@@ -1,4 +1,4 @@
-# Query-Product Relevance Classification in Amazon Search using NLP: A Comparative Study of Traditional ML and Deep Learning Approaches
+# Query-Product Relevance Classification in Amazon Search using NLP: A Comparative Analysis of Traditional ML and Deep Learning Approaches
 ### NLP Case Study (CA-3) | MTech AI/ML | Symbiosis Institute of Technology, Pune
 **PRN:** 25070149025 &nbsp;|&nbsp; **Faculty:** Dr. Aniket Shahade
 
